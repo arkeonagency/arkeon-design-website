@@ -10,7 +10,7 @@ const Hero = () => {
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-arkeon-blue/30 rounded-full blur-[120px] opacity-60 animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-arkeon-gold/20 rounded-full blur-[100px] opacity-50" />
         {/* Abstract Noise Texture */}
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
+        <div className="absolute inset-0 bg-[url('/images/noise.svg')] opacity-20 mix-blend-overlay"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10 text-center">

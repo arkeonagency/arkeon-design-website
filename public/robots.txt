@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://arkeon-design-website.vercel.app/sitemap-index.xml
