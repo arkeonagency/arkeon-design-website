@@ -91,7 +91,7 @@ export default function Footer() {
               <h4 className="text-white font-semibold mb-6">Contact</h4>
               <ul className="space-y-4 text-sm text-gray-400">
                 <li><a href="/contact" className="hover:text-arkeon-gold transition-colors">Book a Call</a></li>
-                <li>hello@arkeon.example</li>
+                <li>bereketdesigns@gmail.com</li>
                 <li>Addis Ababa, Ethiopia</li>
               </ul>
             </div>
@@ -126,7 +126,7 @@ export default function Footer() {
           </div>
 
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-gray-500">© {new Date().getFullYear()} Arkeon Studio. All rights reserved.</p>
+            <p className="text-xs text-gray-300">© {new Date().getFullYear()} Arkeon Studio. All rights reserved.</p>
             <div className="flex gap-6 text-xs text-gray-400 items-center">
               <a href="/privacy" className="hover:text-arkeon-gold transition-colors">Privacy</a>
               <a href="/terms" className="hover:text-arkeon-gold transition-colors">Terms</a>

@@ -4,6 +4,12 @@ import Hero from '../components/Hero.jsx';
 import Seo from '../components/Seo.jsx';
 import CaseStudyCard from '../components/CaseStudyCard.jsx';
 import LogoMarquee from '../components/LogoMarquee.jsx';
+import { Image } from 'astro:assets'; // NEW: Image optimization
+
+// Import images directly for optimization
+import amanHero from '../assets/images/aman.jpg';
+import nouraHero from '../assets/images/noura.jpg';
+import divinexHero from '../assets/images/divinex.jpg';
 ---
 
 <BaseLayout>
@@ -13,10 +19,9 @@ import LogoMarquee from '../components/LogoMarquee.jsx';
   />
 
   <Hero client:load />
-  {/* NEW: Logo Marquee */}
-<LogoMarquee client:load />
 
-{/* Intro Blurb - Transparent BG to let global glow show */}
+  <LogoMarquee client:load />
+
   {/* Intro Blurb */}
   <section class="py-24 relative" data-aos="fade-up">
     <div class="container mx-auto px-6 relative z-10">
@@ -33,7 +38,7 @@ import LogoMarquee from '../components/LogoMarquee.jsx';
     </div>
   </section>
 
-  {/* Services Preview - WHOLE CARD CLICKABLE */}
+  {/* Services Preview */}
   <section class="py-20">
     <div class="container mx-auto px-6">
       <div class="grid md:grid-cols-3 gap-8">
@@ -42,14 +47,12 @@ import LogoMarquee from '../components/LogoMarquee.jsx';
           { title: "Evolution", desc: "For growing brands needing SEO & interactions.", price: "Premium" },
           { title: "Pinnacle", desc: "Full brand & digital experience for luxury players.", price: "Luxury" }
         ].map((service, index) => (
-          /* CHANGED: Div is now an Anchor Tag (A) */
           <a 
             href={`/services/${service.title.toLowerCase()}`}
             class="group block p-8 border border-white/5 rounded-2xl bg-white/[0.02] backdrop-blur-sm hover:bg-white/[0.05] hover:border-arkeon-gold/30 transition-all duration-500 relative overflow-hidden"
             data-aos="fade-up"
             data-aos-delay={index * 100}
           >
-            {/* Hover Glow Effect */}
             <div class="absolute inset-0 bg-gradient-to-br from-arkeon-gold/0 via-arkeon-gold/0 to-arkeon-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             <h3 class="text-3xl font-serif mb-2 text-white group-hover:text-arkeon-gold transition-colors">{service.title}</h3>
@@ -65,7 +68,7 @@ import LogoMarquee from '../components/LogoMarquee.jsx';
     </div>
   </section>
 
-  {/* Featured Work */}
+  {/* Featured Work - OPTIMIZED IMAGES */}
   <section class="py-32 bg-black/30 border-y border-white/5 relative">
     <div class="absolute top-0 right-0 w-[300px] h-[300px] bg-arkeon-blue/20 blur-[120px] rounded-full pointer-events-none"></div>
 
@@ -78,24 +81,37 @@ import LogoMarquee from '../components/LogoMarquee.jsx';
         <a href="/work" class="text-sm text-gray-400 hover:text-white border-b border-white/20 pb-1 hover:border-white transition-all">View all projects →</a>
       </div>
       <div class="grid md:grid-cols-3 gap-10">
-        <CaseStudyCard 
-          title="Aman Dental"
-          category="Healthcare"
-          image="images/aman.jpg"
-          href="/work/aman-dental"
-        />
-        <CaseStudyCard 
-          title="NOURA Skincare"
-          category="E-Commerce"
-          image="images/noura.jpg"
-          href="/work/noura-skincare"
-        />
-        <CaseStudyCard 
-          title="Divinex"
-          category="Creative"
-          image="images/divinex.jpg"
-          href="/work/divinex"
-        />
+        
+        {/* MANUAL CARD: Aman Dental */}
+        <a href="/work/aman-dental" class="group block relative overflow-hidden rounded-lg aspect-[4/3]">
+          <Image src={amanHero} alt="Aman Dental" width={800} quality="80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity duration-300" />
+          <div class="absolute bottom-0 left-0 w-full p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+            <span class="text-arkeon-gold text-xs font-medium uppercase tracking-wider mb-2 block">Healthcare</span>
+            <h3 class="text-2xl font-serif text-white font-bold">Aman Dental</h3>
+          </div>
+        </a>
+
+        {/* MANUAL CARD: Noura */}
+        <a href="/work/noura-skincare" class="group block relative overflow-hidden rounded-lg aspect-[4/3]">
+          <Image src={nouraHero} alt="NOURA Skincare" width={800} quality="80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity duration-300" />
+          <div class="absolute bottom-0 left-0 w-full p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+            <span class="text-arkeon-gold text-xs font-medium uppercase tracking-wider mb-2 block">E-Commerce</span>
+            <h3 class="text-2xl font-serif text-white font-bold">NOURA Skincare</h3>
+          </div>
+        </a>
+
+        {/* MANUAL CARD: DivineX */}
+        <a href="/work/divinex-agency" class="group block relative overflow-hidden rounded-lg aspect-[4/3]">
+          <Image src={divinexHero} alt="DivineX Agency" width={800} quality="80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity duration-300" />
+          <div class="absolute bottom-0 left-0 w-full p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+            <span class="text-arkeon-gold text-xs font-medium uppercase tracking-wider mb-2 block">Creative</span>
+            <h3 class="text-2xl font-serif text-white font-bold">DivineX Agency</h3>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>
@@ -131,14 +147,12 @@ import LogoMarquee from '../components/LogoMarquee.jsx';
     </div>
   </section>
 
-  {/* Testimonials */}
+  {/* Testimonials - Infinite Marquee */}
   <section class="py-24 relative overflow-hidden">
     <div class="absolute inset-0 bg-white/[0.02]"></div>
-    
     <div class="container mx-auto px-6 mb-12 text-center relative z-10">
        <h2 class="text-3xl font-serif text-white">Client Stories</h2>
     </div>
-
     <div class="absolute top-0 bottom-0 left-0 w-24 z-20 bg-gradient-to-r from-arkeon-charcoal to-transparent pointer-events-none"></div>
     <div class="absolute top-0 bottom-0 right-0 w-24 z-20 bg-gradient-to-l from-arkeon-charcoal to-transparent pointer-events-none"></div>
 
@@ -147,40 +161,17 @@ import LogoMarquee from '../components/LogoMarquee.jsx';
         {[...Array(2)].map(() => (
           <>
             {[
-              {
-                quote: "Arkeon transformed our website into a true brand asset. The attention to detail is unmatched.",
-                author: "Sarah Jenkins",
-                role: "CEO, Horizon Labs"
-              },
-              {
-                quote: "The best investment we made this year. They understood our luxury positioning perfectly.",
-                author: "David Alazar",
-                role: "Founder, Aman Dental"
-              },
-              {
-                quote: "Technical perfection. Our site loads instantly and our SEO ranking skyrocketed.",
-                author: "Michael Ross",
-                role: "CTO, FinTech Global"
-              },
-              {
-                quote: "They don't just build websites, they build businesses. The strategy phase was eye-opening.",
-                author: "Elena K.",
-                role: "Director, Noura Skincare"
-              }
+              { quote: "Arkeon transformed our website into a true brand asset. The attention to detail is unmatched.", author: "Sarah Jenkins", role: "CEO, Horizon Labs" },
+              { quote: "The best investment we made this year. They understood our luxury positioning perfectly.", author: "David Alazar", role: "Founder, Aman Dental" },
+              { quote: "Technical perfection. Our site loads instantly and our SEO ranking skyrocketed.", author: "Michael Ross", role: "CTO, FinTech Global" },
+              { quote: "They don't just build websites, they build businesses. The strategy phase was eye-opening.", author: "Elena K.", role: "Director, Noura Skincare" }
             ].map((item) => (
               <div class="w-[350px] md:w-[450px] p-8 md:p-10 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-md flex-shrink-0 hover:border-arkeon-gold/30 transition-colors cursor-default">
-                <div class="flex gap-1 mb-4">
-                  {[1,2,3,4,5].map(() => <span class="text-arkeon-gold text-sm">★</span>)}
-                </div>
+                <div class="flex gap-1 mb-4">{[1,2,3,4,5].map(() => <span class="text-arkeon-gold text-sm">★</span>)}</div>
                 <p class="text-lg text-gray-200 font-serif italic mb-6 leading-relaxed">"{item.quote}"</p>
                 <div class="flex items-center gap-4">
-                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-700 to-black border border-white/10 flex items-center justify-center text-xs font-bold text-white">
-                    {item.author.charAt(0)}
-                  </div>
-                  <div>
-                    <p class="text-white text-sm font-bold">{item.author}</p>
-                    <p class="text-arkeon-gold text-xs uppercase tracking-wider">{item.role}</p>
-                  </div>
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-700 to-black border border-white/10 flex items-center justify-center text-xs font-bold text-white">{item.author.charAt(0)}</div>
+                  <div><p class="text-white text-sm font-bold">{item.author}</p><p class="text-arkeon-gold text-xs uppercase tracking-wider">{item.role}</p></div>
                 </div>
               </div>
             ))}
@@ -189,16 +180,9 @@ import LogoMarquee from '../components/LogoMarquee.jsx';
       </div>
     </div>
     <style>
-      @keyframes scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-      }
-      .animate-scroll {
-        animation: scroll 40s linear infinite;
-      }
-      .hover\:pause:hover {
-        animation-play-state: paused;
-      }
+      @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+      .animate-scroll { animation: scroll 40s linear infinite; }
+      .hover\:pause:hover { animation-play-state: paused; }
     </style>
   </section>
 
@@ -207,12 +191,7 @@ import LogoMarquee from '../components/LogoMarquee.jsx';
     <div class="absolute inset-0 bg-radial-gradient from-arkeon-gold/10 to-transparent opacity-50"></div>
     <div class="container mx-auto px-6 relative z-10">
       <h2 class="text-5xl md:text-7xl font-serif mb-10 text-white">Ready to begin?</h2>
-      <a 
-        href="/contact" 
-        class="inline-block px-12 py-5 bg-arkeon-white text-arkeon-charcoal text-lg font-bold rounded-full hover:scale-105 hover:bg-arkeon-gold transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.2)]"
-      >
-        Start Your Project
-      </a>
+      <a href="/contact" class="inline-block px-12 py-5 bg-arkeon-white text-arkeon-charcoal text-lg font-bold rounded-full hover:scale-105 hover:bg-arkeon-gold transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.2)]">Start Your Project</a>
     </div>
   </section>
 </BaseLayout>

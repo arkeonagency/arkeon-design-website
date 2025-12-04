@@ -3,6 +3,9 @@ import '../styles/global.css';
 import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
 import 'aos/dist/aos.css';
+
+// Get current path to pass to Navbar
+const currentPath = Astro.url.pathname;
 ---
 
 <!DOCTYPE html>
@@ -16,19 +19,17 @@ import 'aos/dist/aos.css';
   </head>
   <body class="bg-arkeon-charcoal text-white overflow-x-hidden selection:bg-arkeon-gold selection:text-arkeon-charcoal flex flex-col min-h-screen">
     
-    {/* Navbar needs React to handle the mobile menu and scroll effects */}
-    <Navbar client:only="react" />
+    {/* 
+        FIX: 
+        1. Changed client:only -> client:load (Renders HTML immediately) 
+        2. Passed 'currentPath' so it knows if it's the home page instantly
+    */}
+    <Navbar client:load path={currentPath} />
 
     <main class="flex-grow pt-20">
       <slot />
     </main>
 
-    {/* 
-       FIX IS HERE: 
-       Added 'client:visible'. This tells Astro to load the React JavaScript 
-       as soon as the user scrolls down to the footer. 
-       Without this, the Subscribe button will just reload the page.
-    */}
     <Footer client:visible />
 
     <script>

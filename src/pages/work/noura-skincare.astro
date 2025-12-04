@@ -2,6 +2,13 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Seo from '../../components/Seo.jsx';
 import { ArrowLeft, ExternalLink, Sparkles, ShoppingBag } from 'lucide-react';
+import { Image } from 'astro:assets';
+import amanThumb from '../../assets/images/aman.jpg';
+import divinexThumb from '../../assets/images/divinex.jpg';
+
+import heroImage from '../../assets/images/noura.jpg';
+import gallery1 from '../../assets/images/noura1.jpg'; // Replace with real product shot if you have one
+import gallery2 from '../../assets/images/noura2.jpg'; // Replace with real lifestyle shot
 
 const liveLink = "https://noura-skincare.vercel.app/"; 
 ---
@@ -12,7 +19,6 @@ const liveLink = "https://noura-skincare.vercel.app/";
     description="NOURA skincare brand & website by Arkeon — premium minimalism for a luxury skincare line." 
   />
 
-  {/* HERO */}
   <section class="pt-32 pb-20 relative overflow-hidden">
     <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-arkeon-gold/10 blur-[150px] rounded-full pointer-events-none"></div>
     <div class="container mx-auto px-6 relative z-10">
@@ -34,12 +40,11 @@ const liveLink = "https://noura-skincare.vercel.app/";
       </div>
 
       <div class="w-full aspect-[21/9] bg-gray-800 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-        <img src="/images/noura.jpg" alt="Hero" class="w-full h-full object-cover" />
+        <Image src={heroImage} alt="Noura Hero" class="w-full h-full object-cover" width={1600} quality="85" />
       </div>
     </div>
   </section>
 
-  {/* CONTEXT */}
   <section class="py-24">
     <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16">
         <div>
@@ -66,23 +71,19 @@ const liveLink = "https://noura-skincare.vercel.app/";
     </div>
   </section>
 
-  {/* EXECUTION */}
   <section class="py-24 bg-white/[0.02] border-y border-white/5 relative">
     <div class="container mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="grid md:grid-cols-2 gap-20 items-center">
             <div class="order-2 md:order-1 relative">
-                <div class="absolute inset-0 bg-arkeon-gold/20 blur-[80px] rounded-full"></div>
-                <img src="../images/noura1.jpg" class="rounded-xl border border-white/10 shadow-2xl relative z-10" alt="UI" />
-                <img src="../images/noura2.jpg" class="rounded-xl border border-white/10 shadow-2xl relative z-10" alt="UI" />
+                <div class="absolute inset-0 bg-arkeon-gold/20 blur-[80px] rounded-full gap-5"></div>
+                <Image src={gallery1} class="rounded-xl border border-white/10 shadow-2xl relative z-10 w-full" alt="UI" />
+                <Image src={gallery2} class="rounded-xl border border-white/10 shadow-2xl relative z-10 w-full" alt="UI" />
             </div>
             <div class="order-1 md:order-2">
                 <span class="text-arkeon-gold text-sm font-bold uppercase tracking-widest mb-2 block">The Craft</span>
                 <h2 class="text-4xl font-serif text-white mb-6">Premium Minimalism</h2>
                 <p class="text-gray-400 leading-relaxed mb-6">
                     We used a "Card-Less" design approach. By removing borders and background containers for products, we allowed the high-fidelity photography to blend seamlessly into the negative space.
-                </p>
-                <p class="text-gray-400 leading-relaxed">
-                    Typography played a huge role. We paired a delicate serif for headlines with a utilitarian sans-serif for product details, creating a hierarchy that is both beautiful and functional.
                 </p>
             </div>
         </div>
@@ -95,8 +96,8 @@ const liveLink = "https://noura-skincare.vercel.app/";
         <h3 class="text-2xl font-serif text-white mb-8">More Selected Work</h3>
         <div class="grid md:grid-cols-2 gap-8">
             <a href="/work/divinex-agency" class="group block relative overflow-hidden rounded-2xl aspect-[16/9] border border-white/10">
-                <img src="/images/divinex.jpg" alt="DivineX" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+            <Image src={divinexThumb} alt="Noura" class="w-full h-full object-cover absolute inset-0" />
+                <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors flex items-center justify-center z-10">
                     <div class="text-center">
                         <span class="text-arkeon-gold text-xs font-bold uppercase tracking-widest">Next Project</span>
                         <h4 class="text-3xl font-serif text-white mt-2 group-hover:underline decoration-arkeon-gold underline-offset-4">DivineX Agency</h4>
@@ -104,8 +105,8 @@ const liveLink = "https://noura-skincare.vercel.app/";
                 </div>
             </a>
             <a href="/work/aman-dental" class="group block relative overflow-hidden rounded-2xl aspect-[16/9] border border-white/10">
-                <img src="/images/aman.jpg" alt="Aman" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+            <Image src={amanThumb} alt="Noura" class="w-full h-full object-cover absolute inset-0" />
+                <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors flex items-center justify-center z-10">
                     <div class="text-center">
                         <span class="text-arkeon-gold text-xs font-bold uppercase tracking-widest">Next Project</span>
                         <h4 class="text-3xl font-serif text-white mt-2 group-hover:underline decoration-arkeon-gold underline-offset-4">Aman Dental</h4>

@@ -2,6 +2,13 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Seo from '../../components/Seo.jsx';
 import { ArrowLeft, ExternalLink, Code2, Cpu } from 'lucide-react';
+import { Image } from 'astro:assets';
+import amanThumb from '../../assets/images/aman.jpg';
+import nouraThumb from '../../assets/images/noura.jpg';
+
+import heroImage from '../../assets/images/divinex.jpg';
+import detailImage from '../../assets/images/alldevice.jpg'; // Replace if you have a detail shot
+
 ---
 
 <BaseLayout>
@@ -31,7 +38,7 @@ import { ArrowLeft, ExternalLink, Code2, Cpu } from 'lucide-react';
       </div>
 
       <div class="w-full aspect-[21/9] bg-gray-800 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
-        <img src="/images/divinex.jpg" alt="Hero" class="w-full h-full object-cover" />
+        <Image src={heroImage} alt="DivineX Hero" class="w-full h-full object-cover" width={1600} quality="85" />
       </div>
     </div>
   </section>
@@ -41,7 +48,7 @@ import { ArrowLeft, ExternalLink, Code2, Cpu } from 'lucide-react';
         <div>
             <h2 class="text-3xl font-serif text-white mb-6">The Concept</h2>
             <p class="text-gray-400 leading-relaxed text-lg mb-8">
-                DivineX required a digital presence that mirrored their creative philosophy: bold, modern, and forward-thinking. The goal was to step away from traditional corporate layouts and create an immersive journey that captures the user's attention immediately.
+                DivineX required a digital presence that mirrored their creative philosophy: bold, modern, and forward-thinking. The goal was to step away from traditional corporate layouts and create an immersive journey.
             </p>
         </div>
         <div class="bg-purple-900/10 p-8 rounded-2xl border border-purple-500/20">
@@ -60,8 +67,9 @@ import { ArrowLeft, ExternalLink, Code2, Cpu } from 'lucide-react';
         <span class="text-arkeon-gold text-sm font-bold uppercase tracking-widest mb-2 block">The Execution</span>
         <h2 class="text-4xl font-serif text-white mb-12">Dark Mode Aesthetic</h2>
         <div class="grid md:grid-cols-3 gap-6">
-            <img src="/images/divinex.jpg" class="rounded-xl border border-white/10 shadow-lg md:col-span-2" alt="Main UI" />
-            <img src="/images/alldevice.jpg" class="rounded-xl border border-white/10 shadow-lg md:col-span-2" alt="Main UI" />
+            <div class="md:col-span-2">
+                <Image src={detailImage} class="rounded-xl border border-white/10 shadow-lg w-full" alt="Main UI" />
+            </div>
             <div class="bg-black/40 p-6 rounded-xl border border-white/10 text-left">
                 <h4 class="text-white font-bold mb-2">Typography</h4>
                 <p class="text-sm text-gray-400">High contrast sans-serif fonts to ensure readability against deep charcoal backgrounds.</p>
@@ -80,8 +88,8 @@ import { ArrowLeft, ExternalLink, Code2, Cpu } from 'lucide-react';
         <h3 class="text-2xl font-serif text-white mb-8">More Selected Work</h3>
         <div class="grid md:grid-cols-2 gap-8">
             <a href="/work/aman-dental" class="group block relative overflow-hidden rounded-2xl aspect-[16/9] border border-white/10">
-                <img src="/images/aman.jpg" alt="Aman" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+            <Image src={amanThumb} alt="Noura" class="w-full h-full object-cover absolute inset-0" />
+                <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors flex items-center justify-center z-10">
                     <div class="text-center">
                         <span class="text-arkeon-gold text-xs font-bold uppercase tracking-widest">Next Project</span>
                         <h4 class="text-3xl font-serif text-white mt-2 group-hover:underline decoration-arkeon-gold underline-offset-4">Aman Dental</h4>
@@ -89,8 +97,8 @@ import { ArrowLeft, ExternalLink, Code2, Cpu } from 'lucide-react';
                 </div>
             </a>
             <a href="/work/noura-skincare" class="group block relative overflow-hidden rounded-2xl aspect-[16/9] border border-white/10">
-                <img src="/images/noura.jpg" alt="Noura" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+            <Image src={nouraThumb} alt="Noura" class="w-full h-full object-cover absolute inset-0" />
+                <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors flex items-center justify-center z-10">
                     <div class="text-center">
                         <span class="text-arkeon-gold text-xs font-bold uppercase tracking-widest">Next Project</span>
                         <h4 class="text-3xl font-serif text-white mt-2 group-hover:underline decoration-arkeon-gold underline-offset-4">Noura Skincare</h4>

@@ -3,12 +3,17 @@ import React from 'react';
 const Seo = ({ 
   title, 
   description, 
-  image = 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1600&auto=format&fit=crop', // Placeholder OG
+  image = '/images/seo.jpg', // <--- UPDATED DEFAULT
   url 
 }) => {
-  const siteTitle = "Arkeon — Where Brands Begin";
+  const siteTitle = "Arkeon — Premium Digital Studio";
   const finalTitle = title ? `${title} | Arkeon` : siteTitle;
   const finalDesc = description || "Arkeon crafts premium, story-driven websites and brand identities that elevate businesses.";
+  
+  // Ensure absolute URL for social images (Social platforms require https://...)
+  // You can hardcode your Vercel URL here if you don't have a domain yet
+  const domain = "https://arkeon-design-website.vercel.app"; 
+  const absoluteImage = image.startsWith('http') ? image : `${domain}${image}`;
 
   return (
     <>
@@ -21,17 +26,14 @@ const Seo = ({
       <meta property="og:type" content="website" />
       <meta property="og:title" content={finalTitle} />
       <meta property="og:description" content={finalDesc} />
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={absoluteImage} />
       {url && <meta property="og:url" content={url} />}
       
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={finalTitle} />
       <meta name="twitter:description" content={finalDesc} />
-      <meta name="twitter:image" content={image} />
-      
-      {/* Favicon */}
-      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <meta name="twitter:image" content={absoluteImage} />
     </>
   );
 };

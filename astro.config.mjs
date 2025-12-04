@@ -3,12 +3,14 @@ import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
+  // REPLACE WITH YOUR ACTUAL VERCEL URL
+  site: 'https://arkeon-design-website.vercel.app', 
+  
   integrations: [
     react(),
     tailwind({
       applyBaseStyles: false,
     }),
   ],
-  // This ensures the server knows how to handle the build
   output: 'static',
 });
