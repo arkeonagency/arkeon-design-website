@@ -14,7 +14,7 @@ export default function ContactForm() {
     const json = JSON.stringify(object);
     
     // REPLACE 'your-email@gmail.com' WITH YOUR REAL EMAIL BELOW
-    const formEndpoint = 'https://formsubmit.co/ajax/your-email@gmail.com';
+    const formEndpoint = 'https://formsubmit.co/ajax/bereketdesigns@gmail.com';
 
     try {
       const response = await fetch(formEndpoint, {
