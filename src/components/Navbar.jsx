@@ -54,7 +54,7 @@ export default function Navbar() {
         className={`fixed z-[150] left-1/2 -translate-x-1/2 transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] ${
           scrolled 
             ? 'top-3 w-[90%] md:w-full md:max-w-5xl bg-arkeon-charcoal/40 backdrop-blur-xl border border-white/10 rounded-full py-3 shadow-[0_8px_32px_rgba(0,0,0,0.3)]' 
-            : 'top-0 w-full bg-transparent py-3 border-b border-transparent'
+            : 'top-2 w-full bg-transparent py-3 border-b border-transparent'
         }`}
       >
         <div className={`flex items-center justify-between w-full ${scrolled ? 'px-8' : 'px-6 md:px-12'}`}>
