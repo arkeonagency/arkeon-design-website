@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle, ChevronDown } from 'lucide-react';
 
 export default function ContactForm() {
   const [status, setStatus] = useState('idle'); // idle, submitting, success, error
@@ -11,10 +11,9 @@ export default function ContactForm() {
     const formData = new FormData(e.target);
     
     // Using formsubmit.co for static site form handling
-    // Replace 'your-email@example.com' with your actual email or use the auto-generated endpoint
-    // Ideally, use the random string endpoint provided by formsubmit to hide email
+    // Ideally replace 'your-email@example.com' with the actual email you want to receive submissions at
     try {
-      const response = await fetch('https://formsubmit.co/ajax/your-email@example.com', {
+      const response = await fetch('https://formsubmit.co/ajax/bereketdesigns@gmail.com', {
         method: 'POST',
         body: formData,
       });
@@ -32,7 +31,7 @@ export default function ContactForm() {
 
   if (status === 'success') {
     return (
-      <div className="bg-green-900/20 border border-green-500/50 p-8 rounded-lg text-center">
+      <div className="bg-green-900/20 border border-green-500/50 p-8 rounded-lg text-center backdrop-blur-sm">
         <div className="flex justify-center mb-4 text-green-500">
           <CheckCircle size={48} />
         </div>
@@ -49,7 +48,7 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Hidden Captcha field for FormSubmit */}
       <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_subject" value="New Inquiry from Arkeon Site" />
+      <input type="hidden" name="_subject" value="New Project Inquiry - Arkeon Site" />
 
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-2">
@@ -87,18 +86,27 @@ export default function ContactForm() {
             className="w-full bg-white/5 border border-white/10 rounded p-3 text-white focus:border-arkeon-gold focus:outline-none focus:ring-1 focus:ring-arkeon-gold transition-all"
           />
         </div>
-        <div className="space-y-2">
-          <label htmlFor="budget" className="text-sm font-medium text-gray-400">Budget Range</label>
-          <select 
-            name="budget" 
-            id="budget"
-            className="w-full bg-white/5 border border-white/10 rounded p-3 text-white focus:border-arkeon-gold focus:outline-none focus:ring-1 focus:ring-arkeon-gold transition-all"
-          >
-            <option value="1.5k-2.5k">$1,500 - $2,500</option>
-            <option value="3.5k-5.5k">$3,500 - $5,500</option>
-            <option value="6k+">$6,000+</option>
-            <option value="Not sure">Not sure yet</option>
-          </select>
+        
+        {/* CUSTOM BUDGET SELECTOR */}
+        <div className="space-y-2 relative">
+          <label htmlFor="budget" className="text-sm font-medium text-gray-400">Estimated Budget</label>
+          <div className="relative">
+            <select 
+              name="budget" 
+              id="budget"
+              className="w-full bg-white/5 border border-white/10 rounded p-3 text-white focus:border-arkeon-gold focus:outline-none focus:ring-1 focus:ring-arkeon-gold transition-all appearance-none cursor-pointer"
+            >
+              <option value="" disabled selected className="bg-arkeon-charcoal text-gray-500">Select a range</option>
+              <option value="Origin ($1.5k - $3k)" className="bg-arkeon-charcoal text-white">Origin ($1.5k - $3k)</option>
+              <option value="Evolution ($3.5k - $6k)" className="bg-arkeon-charcoal text-white">Evolution ($3.5k - $6k)</option>
+              <option value="Pinnacle ($6k - $12k+)" className="bg-arkeon-charcoal text-white">Pinnacle ($6k - $12k+)</option>
+              <option value="Custom / Not Sure" className="bg-arkeon-charcoal text-white">Custom / Not Sure</option>
+            </select>
+            {/* Custom Arrow Icon positioned absolutely */}
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-arkeon-gold">
+                <ChevronDown size={16} />
+            </div>
+          </div>
         </div>
       </div>
 
@@ -117,7 +125,7 @@ export default function ContactForm() {
       <button 
         type="submit" 
         disabled={status === 'submitting'}
-        className="w-full py-4 bg-arkeon-gold text-arkeon-charcoal font-bold rounded hover:bg-white transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full py-4 bg-arkeon-gold text-arkeon-charcoal font-bold rounded hover:bg-white transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_20px_rgba(230,197,91,0.2)]"
       >
         {status === 'submitting' ? 'Sending...' : 'Send Message'} <Send size={18} />
       </button>

@@ -5,20 +5,47 @@ import Seo from '../components/Seo.jsx';
 
 <BaseLayout>
   <Seo title="Terms of Service" />
-  <section class="pt-32 pb-20">
-    <div class="container mx-auto px-6 max-w-3xl prose prose-invert">
-      <h1 class="font-serif text-4xl mb-8">Terms of Service</h1>
-      
-      <p>By accessing the Arkeon website, you agree to these terms.</p>
-      
-      <h3>Intellectual Property</h3>
-      <p>All content, designs, and code on this site are the property of Arkeon Studio unless otherwise noted.</p>
-      
-      <h3>Limitation of Liability</h3>
-      <p>Arkeon is not liable for any damages arising from the use of this website.</p>
-      
-      <h3>Changes</h3>
-      <p>We reserve the right to modify these terms at any time.</p>
+  
+  <section class="pt-32 pb-20 relative overflow-hidden">
+    {/* Ambient Glow */}
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-arkeon-gold/5 blur-[150px] rounded-full pointer-events-none"></div>
+
+    <div class="container mx-auto px-6 max-w-3xl relative z-10">
+      <h1 class="text-5xl md:text-6xl font-serif font-bold mb-12 text-white">
+        Terms of <span class="text-gradient-gold">Service</span>
+      </h1>
+
+      <div class="prose prose-invert prose-lg prose-headings:font-serif prose-headings:text-white prose-p:text-gray-300 prose-li:text-gray-300 prose-strong:text-white prose-a:text-arkeon-gold hover:prose-a:text-white transition-colors">
+        <p class="lead text-xl text-gray-200">
+          By accessing the Arkeon website, you agree to these terms. Please read them carefully.
+        </p>
+
+        <h3>1. Intellectual Property</h3>
+        <p>
+          All content, designs, code, and graphics on this site are the property of <strong>Arkeon Studio</strong> unless otherwise noted. You may not reproduce, distribute, or use these materials without explicit written permission.
+        </p>
+
+        <h3>2. Services & Payments</h3>
+        <p>
+          Project timelines and deliverables are defined in individual client contracts. We typically require a 50% deposit to commence work. Refunds are subject to the terms outlined in your specific service agreement.
+        </p>
+
+        <h3>3. Limitation of Liability</h3>
+        <p>
+          Arkeon is not liable for any direct, indirect, or consequential damages arising from the use of this website or the inability to use our services.
+        </p>
+
+        <h3>4. Changes to Terms</h3>
+        <p>
+          We reserve the right to modify these terms at any time. Continued use of the website constitutes agreement to the updated terms.
+        </p>
+        
+        <div class="mt-12 pt-8 border-t border-white/10">
+          <p class="text-sm text-gray-400">
+            Questions? Contact us at <a href="mailto:hello@arkeon.example">hello@arkeon.example</a>
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>

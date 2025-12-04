@@ -5,9 +5,11 @@ import Seo from '../components/Seo.jsx';
 
 <BaseLayout>
   <Seo title="Privacy Policy" />
-  <section class="pt-32 pb-20">
-    <div class="container mx-auto px-6 max-w-3xl prose prose-invert">
-      <h1 class="font-serif text-4xl mb-8">Privacy Policy</h1>
+  <section class="pt-32 pb-20 relative">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-arkeon-blue/10 blur-[150px] rounded-full pointer-events-none"></div>
+    
+    <div class="container mx-auto px-6 max-w-3xl prose prose-invert prose-lg prose-headings:font-serif prose-headings:text-white prose-p:text-gray-300 prose-a:text-arkeon-gold hover:prose-a:text-white relative z-10">
+      <h1 class="text-5xl mb-12">Privacy Policy</h1>
       <p>Last updated: {new Date().toLocaleDateString()}</p>
       
       <p>At Arkeon, we respect your privacy. This policy explains how we handle your data.</p>

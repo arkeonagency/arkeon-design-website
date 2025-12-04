@@ -25,6 +25,7 @@ export default function Footer() {
               <li><a href="/services" className="hover:text-arkeon-gold transition-colors">Services</a></li>
               <li><a href="/about" className="hover:text-arkeon-gold transition-colors">About</a></li>
               <li><a href="/process" className="hover:text-arkeon-gold transition-colors">Process</a></li>
+              <li><a href="/pricing" className="hover:text-arkeon-gold transition-colors">Pricing</a></li>
               <li><a href="/blog" className="hover:text-arkeon-gold transition-colors">Insights</a></li>
             </ul>
           </div>

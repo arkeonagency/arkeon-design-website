@@ -5,18 +5,24 @@ import Seo from '../components/Seo.jsx';
 
 <BaseLayout>
   <Seo title="Page Not Found" />
-  <section class="h-screen flex items-center justify-center text-center">
-    <div class="container mx-auto px-6">
-      <h1 class="text-9xl font-serif font-bold text-white/5 select-none">404</h1>
-      <h2 class="text-3xl font-serif text-white mb-6 -mt-10 relative z-10">Page Not Found</h2>
-      <p class="text-gray-400 mb-8 max-w-md mx-auto">
+  <section class="min-h-[80vh] flex items-center justify-center text-center relative overflow-hidden">
+    
+    {/* Giant Glow */}
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-arkeon-gold/5 blur-[150px] rounded-full pointer-events-none"></div>
+
+    <div class="container mx-auto px-6 relative z-10">
+      <h1 class="text-[10rem] md:text-[15rem] font-serif font-bold text-transparent bg-clip-text bg-gradient-to-b from-white/[0.05] to-transparent select-none leading-none">
+        404
+      </h1>
+      <h2 class="text-3xl md:text-5xl font-serif text-white mb-6 -mt-10 md:-mt-20 relative z-20">Page Not Found</h2>
+      <p class="text-gray-400 mb-10 max-w-md mx-auto text-lg">
         The page you are looking for has moved or does not exist. Let's get you back on track.
       </p>
-      <div class="flex justify-center gap-4">
-        <a href="/" class="px-6 py-3 bg-arkeon-gold text-arkeon-charcoal font-bold rounded hover:bg-white transition-colors">
+      <div class="flex justify-center gap-6">
+        <a href="/" class="px-8 py-3 bg-arkeon-gold text-arkeon-charcoal font-bold rounded-full hover:bg-white hover:scale-105 transition-all shadow-lg">
           Go Home
         </a>
-        <a href="/work" class="px-6 py-3 border border-white/20 text-white font-bold rounded hover:bg-white/10 transition-colors">
+        <a href="/work" class="px-8 py-3 border border-white/20 text-white font-bold rounded-full hover:bg-white/10 hover:border-white transition-all">
           View Work
         </a>
       </div>

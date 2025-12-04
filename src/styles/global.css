@@ -3,36 +3,31 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
-  NOTE: The design requests 'Recoleta'. Since it is a licensed font, 
-  we are using 'Playfair Display' as a high-quality fallback.
-  If you have the Recoleta woff2 files, add them to /public/fonts 
-  and uncomment the @font-face block below.
-*/
-
-/* 
-@font-face {
-  font-family: 'Recoleta';
-  src: url('/fonts/Recoleta-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-display: swap;
-} 
-*/
-
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #1C1C1E; /* Deep Charcoal */
-    color: #F7F7F7; /* Warm White */
+    background-color: #1C1C1E;
   }
   
   body {
     @apply font-sans antialiased overflow-x-hidden;
+    /* NEW: Deep Ambient Background */
+    background: radial-gradient(circle at 15% 50%, rgba(43, 58, 103, 0.15), transparent 25%), 
+                radial-gradient(circle at 85% 30%, rgba(230, 197, 91, 0.08), transparent 25%);
+    background-color: #1C1C1E;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    /* Change to font-serif if you load Recoleta, currently using Playfair as proxy */
-    @apply font-serif text-arkeon-white; 
+    @apply font-serif text-white; 
+  }
+
+  /* NEW: Utility class for Text Gradients */
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-arkeon-gold via-[#F3E2A9] to-arkeon-gold;
+  }
+  
+  .text-gradient-silver {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-gray-200 to-gray-500;
   }
 
   /* Custom Scrollbar */
@@ -50,8 +45,6 @@
     background: #E6C55B;
   }
 }
-
-/* ... existing code ... */
 
 /* GHOST BUSTER: Hide any duplicate headers */
 header:not(#react-navbar) {

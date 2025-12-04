@@ -3,10 +3,11 @@ import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
-  { name: 'Home', href: '/' },
+  //{ name: 'Home', href: '/' },
   { name: 'Services', href: '/services' },
   { name: 'Work', href: '/work' },
   { name: 'Process', href: '/process' },
+  { name: 'Pricing', href: '/pricing' },
   { name: 'About', href: '/about' },
   { name: 'Insights', href: '/blog' },
 ];
@@ -14,7 +15,7 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Initialize state based on the current URL immediately
+  // Initialize state based on URL
   const [scrolled, setScrolled] = useState(() => {
     if (typeof window !== 'undefined') {
       return window.location.pathname !== '/';
@@ -37,7 +38,6 @@ export default function Navbar() {
     }
   }, []);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -50,14 +50,14 @@ export default function Navbar() {
     <>
       <header 
         id="react-navbar"
-        // FIX: Increased Z-Index to 150 to stay above the overlay (which is 140)
-        className={`fixed z-[150] transition-all duration-500 ease-in-out ${
+        // FIX: Consistent positioning (left-1/2) + Custom cubic-bezier transition for smoothness
+        className={`fixed z-[150] left-1/2 -translate-x-1/2 transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] ${
           scrolled 
-            ? 'top-4 left-1/2 -translate-x-1/2 w-[90%] md:w-full md:max-w-5xl bg-arkeon-charcoal/75 backdrop-blur-sm border border-white/10 rounded-full py-3 shadow-2xl shadow-black/50' 
-            : 'top-0 left-0 w-full bg-transparent py-4'
+            ? 'top-3 w-[90%] md:w-full md:max-w-5xl bg-arkeon-charcoal/40 backdrop-blur-xl border border-white/10 rounded-full py-3 shadow-[0_8px_32px_rgba(0,0,0,0.3)]' 
+            : 'top-0 w-full bg-transparent py-3 border-b border-transparent'
         }`}
       >
-        <div className={`flex items-center justify-between ${scrolled ? 'px-8 w-full' : 'container mx-auto px-6'}`}>
+        <div className={`flex items-center justify-between w-full ${scrolled ? 'px-8' : 'px-6 md:px-12'}`}>
           
           {/* Logo */}
           <a href="/" className="text-2xl font-serif font-bold text-arkeon-white tracking-wide relative z-[152] flex-shrink-0">
@@ -65,12 +65,12 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-12">
+          <nav className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <a 
                 key={link.name} 
                 href={link.href} 
-                className="text-sm font-medium text-gray-300 hover:text-arkeon-gold transition-colors whitespace-nowrap"
+                className="text-sm font-medium text-gray-300 hover:text-white hover:shadow-[0_0_20px_rgba(230,197,91,0.4)] transition-all whitespace-nowrap"
               >
                 {link.name}
               </a>
@@ -78,10 +78,10 @@ export default function Navbar() {
             
             <a 
               href="/contact" 
-              className={`ml-8 px-6 py-2.5 text-sm font-semibold rounded-full transition-all whitespace-nowrap ${
+              className={`ml-4 px-6 py-2.5 text-sm font-semibold rounded-full transition-all whitespace-nowrap shadow-lg ${
                 scrolled 
-                  ? 'bg-arkeon-gold text-arkeon-charcoal hover:bg-white'
-                  : 'bg-white text-arkeon-charcoal hover:bg-arkeon-gold'
+                  ? 'bg-arkeon-gold text-arkeon-charcoal hover:bg-white hover:scale-105'
+                  : 'bg-white text-arkeon-charcoal hover:bg-arkeon-gold hover:scale-105'
               }`}
             >
               Start Project
@@ -89,7 +89,6 @@ export default function Navbar() {
           </nav>
 
           {/* Mobile Toggle Button */}
-          {/* FIX: Explicit text-white to ensure visibility against dark background */}
           <button 
             className="md:hidden text-white relative z-[152] p-2 focus:outline-none bg-white/5 rounded-full hover:bg-white/10 transition-colors" 
             onClick={() => setIsOpen(!isOpen)}
@@ -108,16 +107,18 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: "tween", duration: 0.3 }}
-            // FIX: Z-Index set to 140 (Lower than Header's 150)
-            className="fixed inset-0 bg-arkeon-charcoal z-[120] flex flex-col justify-center items-start pt-100 pl-10 md:hidden"
+            className="fixed inset-0 bg-arkeon-charcoal z-[120] flex flex-col justify-center items-start pl-10 md:hidden"
           >
-            <div className="flex flex-col gap-3">
+             <div className="absolute top-0 right-0 p-[20%] w-[300px] h-[300px] bg-arkeon-gold/20 blur-[100px] rounded-full pointer-events-none" />
+             <div className="absolute bottom-0 left-0 p-[20%] w-[300px] h-[300px] bg-arkeon-blue/20 blur-[100px] rounded-full pointer-events-none" />
+
+            <div className="flex flex-col gap-3 relative z-10">
                 {navLinks.map((link) => (
                 <a 
                     key={link.name} 
                     href={link.href} 
                     onClick={() => setIsOpen(false)}
-                    className="text-2xl font-serif text-white hover:text-arkeon-gold transition-colors"
+                    className="text-3xl font-serif text-white hover:text-arkeon-gold transition-colors"
                 >
                     {link.name}
                 </a>
@@ -125,7 +126,7 @@ export default function Navbar() {
                 <a 
                 href="/contact" 
                 onClick={() => setIsOpen(false)}
-                className="mt-6 px-8 py-3 bg-arkeon-gold text-arkeon-charcoal font-bold rounded-full text-lg w-fit"
+                className="mt-6 px-8 py-3 bg-arkeon-white text-arkeon-charcoal font-bold rounded-full text-base w-fit shadow-[0_0_20px_rgba(230,197,91,0.4)] hover:bg-arkeon-gold transition-colors"
                 >
                 Start Project
                 </a>

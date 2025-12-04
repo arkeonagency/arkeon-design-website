@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Seo from '../../components/Seo.jsx';
+import { CheckCircle2, ArrowRight, Zap, Gem, Layers } from 'lucide-react';
+
+export async function getStaticPaths() {
+  const packages = [
+    {
+      slug: 'origin',
+      name: 'Origin',
+      tag: 'The Starter',
+      price: '$1.5k – $2.5k',
+      heroDesc: "A powerful narrative start for businesses ready to leave the template world behind.",
+      icon: Zap,
+      difference: "Most starter packages are just WordPress templates filled with lorem ipsum. Origin is different. We build a custom-coded foundation based on your unique story. It is lightweight, incredibly fast, and designed to scale as you grow.",
+      deliverables: [
+        "Strategy Workshop (1 Hour)",
+        "Visual Direction (Moodboard)",
+        "Single Page or 3-Page Structure",
+        "Copywriting Assistance",
+        "Responsive Mobile Design",
+        "Contact Form Integration",
+        "Basic SEO Meta Tags",
+        "1 Week Post-Launch Support"
+      ],
+      idealFor: "Consultants, Solopreneurs, Seed-Stage Startups",
+      timeline: "2 Weeks"
+    },
+    {
+      slug: 'evolution',
+      name: 'Evolution',
+      tag: 'The Growth Engine',
+      price: '$3.5k – $5.5k',
+      heroDesc: "A robust, scalable platform designed for content marketing, SEO, and high conversion.",
+      icon: Layers,
+      difference: "Evolution is for companies that need more than a brochure; they need a machine. We integrate a headless CMS so you can manage content without touching code, add subtle motion design to guide user attention, and implement technical SEO architecture that Google loves.",
+      deliverables: [
+        "Brand Strategy Deep Dive",
+        "5–7 Unique Page Layouts",
+        "CMS Integration (Blog/Case Studies)",
+        "Advanced Animations (AOS/Framer)",
+        "Technical SEO & Sitemap",
+        "Analytics Dashboard Setup",
+        "Newsletter Integration",
+        "1 Month Post-Launch Support"
+      ],
+      idealFor: "Medical Firms, Legal Practices, Growing SaaS, E-Commerce",
+      timeline: "4–6 Weeks"
+    },
+    {
+      slug: 'pinnacle',
+      name: 'Pinnacle',
+      tag: 'The Luxury Experience',
+      price: '$6k – $12k+',
+      heroDesc: "A complete brand immersion using 3D elements, micro-interactions, and sensory design.",
+      icon: Gem,
+      difference: "Pinnacle is where we break the rules. This is for market leaders who cannot afford to look like their competitors. We use WebGL, custom soundscapes (optional), and fluid page transitions to create a site that feels like a software application rather than a document.",
+      deliverables: [
+        "Full Brand Identity System",
+        "Unlimited Page Templates",
+        "Custom Web App Functionality",
+        "3D Elements / WebGL",
+        "Dynamic Filtering & Search",
+        "User Account Systems (Optional)",
+        "Priority 24/7 Support",
+        "Quarterly Strategy Reviews"
+      ],
+      idealFor: "Luxury Real Estate, FinTech, Hospitality, Venture-Backed Tech",
+      timeline: "8–12 Weeks"
+    }
+  ];
+
+  return packages.map(pkg => ({
+    params: { slug: pkg.slug },
+    props: { pkg, allPackages: packages }, // Pass all packages to props
+  }));
+}
+
+const { pkg, allPackages } = Astro.props;
+
+// Filter out the current package to find the others
+const otherPackages = allPackages.filter(p => p.slug !== pkg.slug);
+---
+
+<BaseLayout>
+  <Seo 
+    title={`${pkg.name} Package`} 
+    description={pkg.heroDesc} 
+  />
+
+  {/* HERO SECTION */}
+  <section class="pt-40 pb-20 relative overflow-hidden">
+    <div class={`absolute top-0 right-0 w-[600px] h-[600px] blur-[150px] rounded-full pointer-events-none opacity-40 ${pkg.slug === 'pinnacle' ? 'bg-arkeon-gold/20' : 'bg-arkeon-blue/20'}`}></div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-arkeon-gold text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-md">
+        <pkg.icon size={14} /> {pkg.tag}
+      </div>
+      
+      <h1 class="text-6xl md:text-8xl font-serif font-bold text-white mb-8">
+        {pkg.name}
+      </h1>
+      
+      <p class="text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed mb-12">
+        {pkg.heroDesc}
+      </p>
+
+      <div class="flex flex-col md:flex-row gap-8 items-start md:items-center p-8 bg-white/[0.03] border border-white/10 rounded-2xl backdrop-blur-md inline-flex">
+        <div>
+            <span class="text-gray-400 text-sm uppercase tracking-wider block mb-1">Starting Investment</span>
+            <span class="text-3xl font-bold text-white">{pkg.price}</span>
+        </div>
+        <div class="hidden md:block w-px h-12 bg-white/10"></div>
+        <div>
+            <span class="text-gray-400 text-sm uppercase tracking-wider block mb-1">Timeline</span>
+            <span class="text-3xl font-bold text-white">{pkg.timeline}</span>
+        </div>
+        <div class="hidden md:block w-px h-12 bg-white/10"></div>
+        <a href="/contact" class="px-8 py-4 bg-arkeon-gold text-arkeon-charcoal font-bold rounded-full hover:scale-105 transition-transform shadow-[0_0_20px_rgba(230,197,91,0.3)]">
+            Book This Package
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* THE DIFFERENCE */}
+  <section class="py-24 relative">
+    <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+        <div>
+            <h2 class="text-4xl font-serif text-white mb-6">The <span class="text-gradient-gold">Difference</span></h2>
+            <p class="text-gray-300 text-lg leading-relaxed border-l-2 border-arkeon-gold pl-6">
+                {pkg.difference}
+            </p>
+            <div class="mt-8">
+                <span class="text-xs text-gray-500 uppercase tracking-widest mb-2 block">Ideal For</span>
+                <p class="text-white font-medium">{pkg.idealFor}</p>
+            </div>
+        </div>
+        <div class="relative">
+             <div class="absolute inset-0 bg-arkeon-gold/10 blur-[80px] rounded-full"></div>
+             <div class="relative bg-white/[0.02] border border-white/10 p-10 rounded-2xl backdrop-blur-xl">
+                 <h3 class="text-2xl font-serif text-white mb-8">Deliverables</h3>
+                 <ul class="space-y-4">
+                    {pkg.deliverables.map(item => (
+                        <li class="flex items-start gap-3 text-gray-300">
+                            <CheckCircle2 className="text-arkeon-gold flex-shrink-0 mt-1" size={18} />
+                            <span>{item}</span>
+                        </li>
+                    ))}
+                 </ul>
+             </div>
+        </div>
+    </div>
+  </section>
+
+  {/* SWITCH PACKAGE (NAVIGATION) */}
+  <section class="py-20 border-t border-white/5 bg-white/[0.02]">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-serif text-white mb-10 text-center">Explore Other Tiers</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {otherPackages.map(other => (
+                <a href={`/services/${other.slug}`} class="group flex items-center justify-between p-6 rounded-xl border border-white/10 bg-arkeon-charcoal hover:border-arkeon-gold/30 hover:bg-white/5 transition-all">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-arkeon-gold group-hover:bg-arkeon-gold group-hover:text-arkeon-charcoal transition-colors">
+                             <other.icon size={20} />
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-serif text-white">{other.name}</h3>
+                            <p class="text-sm text-gray-400">{other.price}</p>
+                        </div>
+                    </div>
+                    <div class="text-sm font-bold text-gray-500 group-hover:text-white flex items-center gap-2 transition-colors">
+                        View Details <ArrowRight size={16} />
+                    </div>
+                </a>
+            ))}
+        </div>
+    </div>
+  </section>
+
+</BaseLayout>
