@@ -60,7 +60,7 @@ export default function Navbar() {
         <div className={`flex items-center justify-between w-full ${scrolled ? 'px-8' : 'px-6 md:px-12'}`}>
           
           {/* Logo */}
-          <a href="/" className="text-2xl font-serif font-bold text-arkeon-white tracking-wide relative z-[152] flex-shrink-0">
+          <a href="/" className="text-2xl font-serif font-bold text-arkeon-white tracking-wide relative z-[152] flex-shrink-0 hover:text-arkeon-gold transition-colors duration-300 group">
             ARKEON<span className="text-arkeon-gold">.</span>
           </a>
 

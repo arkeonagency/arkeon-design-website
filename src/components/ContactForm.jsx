@@ -8,23 +8,35 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus('submitting');
 
+    // 1. Convert Form Data to JSON object (More reliable for API)
     const formData = new FormData(e.target);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
     
-    // Using formsubmit.co for static site form handling
-    // Ideally replace 'your-email@example.com' with the actual email you want to receive submissions at
+    // REPLACE 'your-email@gmail.com' WITH YOUR REAL EMAIL BELOW
+    const formEndpoint = 'https://formsubmit.co/ajax/your-email@gmail.com';
+
     try {
-      const response = await fetch('https://formsubmit.co/ajax/bereketdesigns@gmail.com', {
+      const response = await fetch(formEndpoint, {
         method: 'POST',
-        body: formData,
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (response.ok || result.success === "true") {
         setStatus('success');
         e.target.reset();
       } else {
+        console.error("Form Error:", result);
         setStatus('error');
       }
     } catch (err) {
+      console.error("Network Error:", err);
       setStatus('error');
     }
   };
@@ -46,9 +58,10 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Hidden Captcha field for FormSubmit */}
-      <input type="hidden" name="_captcha" value="false" />
+      {/* Hidden Settings for FormSubmit */}
       <input type="hidden" name="_subject" value="New Project Inquiry - Arkeon Site" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_captcha" value="false" />
 
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-2">
@@ -87,7 +100,7 @@ export default function ContactForm() {
           />
         </div>
         
-        {/* CUSTOM BUDGET SELECTOR */}
+        {/* BUDGET SELECTOR */}
         <div className="space-y-2 relative">
           <label htmlFor="budget" className="text-sm font-medium text-gray-400">Estimated Budget</label>
           <div className="relative">
@@ -102,7 +115,6 @@ export default function ContactForm() {
               <option value="Pinnacle ($6k - $12k+)" className="bg-arkeon-charcoal text-white">Pinnacle ($6k - $12k+)</option>
               <option value="Custom / Not Sure" className="bg-arkeon-charcoal text-white">Custom / Not Sure</option>
             </select>
-            {/* Custom Arrow Icon positioned absolutely */}
             <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-arkeon-gold">
                 <ChevronDown size={16} />
             </div>
@@ -132,7 +144,7 @@ export default function ContactForm() {
 
       {status === 'error' && (
         <div className="text-red-400 text-sm flex items-center gap-2 mt-4">
-          <AlertCircle size={16} /> Something went wrong. Please try again or email us directly.
+          <AlertCircle size={16} /> Something went wrong. Check the console or try again.
         </div>
       )}
     </form>
