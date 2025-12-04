@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   // REPLACE WITH YOUR ACTUAL VERCEL URL
-  site: 'https://arkeon-design-website.vercel.app', 
+  site: 'https://arkeon-studio.vercel.app', 
   
   integrations: [react(), tailwind({
     applyBaseStyles: false,
