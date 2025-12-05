@@ -136,10 +136,10 @@ export default function Footer() {
                 <a href="https://t.me/bereket" target="_blank" rel="noreferrer" aria-label="Telegram" className="text-gray-400 hover:text-arkeon-gold hover:scale-110 transition-all">
                   <Send size={18} />
                 </a>
-                <a href="#" aria-label="Instagram" className="text-gray-400 hover:text-arkeon-gold hover:scale-110 transition-all">
+                <a href="https://www.instagram.com/bereketdesigns/" target="_blank" rel="noreferrer" aria-label="Instagram" className="text-gray-400 hover:text-arkeon-gold hover:scale-110 transition-all">
                   <Instagram size={18} />
                 </a>
-                <a href="#" aria-label="LinkedIn" className="text-gray-400 hover:text-arkeon-gold hover:scale-110 transition-all">
+                <a href="https://www.linkedin.com/in/bereket-tadele-b15660252/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-gray-400 hover:text-arkeon-gold hover:scale-110 transition-all">
                   <Linkedin size={18} />
                 </a>
               </div>
