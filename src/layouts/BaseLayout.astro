@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
 import 'aos/dist/aos.css';
+import CookieBanner from '../components/CookieBanner.jsx';
 
 // 1. NEW: Import View Transitions
 import { ViewTransitions } from 'astro:transitions';
@@ -35,7 +36,7 @@ const currentPath = Astro.url.pathname;
     <ViewTransitions />
     <!-- 1. GOOGLE ANALYTICS (GA4) -->
     <!-- Replace G-XXXXXXXXXX with your actual ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KWH8FBPTYE"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -51,7 +52,7 @@ const currentPath = Astro.url.pathname;
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "YOUR_CLARITY_ID");
+        })(window, document, "clarity", "script", "ugnyme494i");
     </script>
 
   </head>
@@ -70,6 +71,8 @@ const currentPath = Astro.url.pathname;
     </main>
 
     <Footer client:visible />
+    
+    <CookieBanner client:load />
 
     <script>
       import AOS from 'aos';
