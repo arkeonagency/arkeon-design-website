@@ -37,7 +37,7 @@ const Hero = () => {
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a 
-              href="https://calendly.com/" 
+              href="/contact" 
               target="_blank" 
               rel="noreferrer"
               className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-arkeon-gold to-[#F0D682] text-arkeon-charcoal font-bold rounded shadow-[0_0_20px_rgba(230,197,91,0.3)] hover:shadow-[0_0_30px_rgba(230,197,91,0.5)] transition-all duration-300 transform hover:-translate-y-1"
