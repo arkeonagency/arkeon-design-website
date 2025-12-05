@@ -2,12 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Seo from '../components/Seo.jsx';
 import CaseStudyCard from '../components/CaseStudyCard.jsx';
+import { Image } from 'astro:assets';
+import aman from '../assets/images/aman.jpg';
+import noura from '../assets/images/noura.jpg';
+import divinex from '../assets/images/divinex.jpg';
 
 const projects = [
   {
     title: "Aman Dental",
     category: "Healthcare",
-    image: "src/assets/images/aman.jpg",
+    Image: "src={aman}",
     href: "/work/aman-dental"
   },
   {
